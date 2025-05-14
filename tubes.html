@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Selamat Web Server Anda Berhasil!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .flash-success {
+            animation: flipIn 2s ease-out forwards, flashSuccess 1s infinite alternate;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeIn 1.5s ease-out 1s forwards;
+        }
+
+        .emoji {
+            font-size: 2.5rem;
+            margin-top: 20px;
+            opacity: 0;
+            animation: bounceIn 1s ease-out 2s forwards;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            top: -10px;
+            animation: confettiFall linear infinite;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .confetti:nth-child(1) { left: 10%; animation-duration: 5s; background: #ff6f61; }
+        .confetti:nth-child(2) { left: 20%; animation-duration: 7s; background: #ffcc00; }
+        .confetti:nth-child(3) { left: 30%; animation-duration: 6s; background: #6a11cb; }
+        .confetti:nth-child(4) { left: 40%; animation-duration: 8s; background: #2575fc; }
+        .confetti:nth-child(5) { left: 50%; animation-duration: 5s; background: #ff4d3b; }
+        .confetti:nth-child(6) { left: 60%; animation-duration: 7s; background: #6a11cb; }
+        .confetti:nth-child(7) { left: 70%; animation-duration: 6s; background: #ffcc00; }
+        .confetti:nth-child(8) { left: 80%; animation-duration: 8s; background: #2575fc; }
+        .confetti:nth-child(9) { left: 90%; animation-duration: 5s; background: #ff6f61; }
+
+        @keyframes flipIn {
+            0% {
+                opacity: 0;
+                transform: perspective(1000px) rotateX(90deg);
+            }
+            100% {
+                opacity: 1;
+                transform: perspective(1000px) rotateX(0deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .error-message {
+            font-family: 'Arial', sans-serif;
+            font-size: 1.5rem;
+            color: red;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        @keyframes shakeError {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+
+        .shake-error {
+            display: inline-block;
+            animation: shakeError 0.5s infinite;
+        }
+
+        @keyframes flashError {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .flash-error {
+            animation: flashError 1s infinite alternate;
+        }
+
+        @keyframes flashSuccess {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .team {
+            font-size: 1rem;
+            margin-top: 30px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out 2.5s forwards;
+        }
+    </style>
+</head>
+<body>
+<script>
+    if (window.location.protocol !== 'http:' && window.location.protocol !== 'https:') {
+        document.body.innerHTML = `
+            <div class="error-message flash-error">
+                <p>❌ Maaf, Anda tidak diizinkan mengakses halaman ini secara langsung. ❌</p>
+                <p>💡 Silakan jalankan file ini menggunakan web server yang sudah dibuat. 💡</p>
+                <p>🌐 Akses melalui web server untuk melihat pesan selamat. 🌐</p>
+            </div>
+        `;
+    } else {
+        document.body.innerHTML = `
+            <!-- Confetti Particles -->
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+
+            <div class="container">
+                <h1 class="flash-success">SELAMAT WEB SERVER ANDA BISA JALAN 🎉👏</h1>
+                <div class="emoji">😊</div>
+                <div class="team">
+                    <p>Dibuat oleh:</p>
+                    <p>👨‍💻 Farhan Muamar Fawwaz</p>
+                    <p>👩‍💻 Arina Rahmania Nabila</p>
+                    <p>👨‍💻 Gilang Wasis Wicaksono</p>
+                </div>
+            </div>
+        `;
+    }
+</script>
+</body>
+</html>
